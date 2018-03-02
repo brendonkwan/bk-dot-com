@@ -8,7 +8,7 @@ Document (and script where possible) the procedure that was used to set up `http
 1. Change directory to your cloned repository.
 1. Run the following commands:
 
-    $ vim hosts.txt
-    (List all your EC2 hosts, and save the file)
+        $ vim hosts.txt
+        (List all your EC2 hosts, and save the file)
 
-    $ ansible-playbook --inventory=hosts.txt --user=<USER> --private-key=<KEY_FILE> playbooks/setup-bk-dot-com.yml
+        $ ansible-playbook --inventory=hosts.txt --user=<USER> --private-key=<KEY_FILE> playbooks/setup-bk-dot-com.yml
