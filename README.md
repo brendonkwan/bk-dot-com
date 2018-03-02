@@ -1,7 +1,7 @@
 # bk-dot-com
-Scripts that were used to set up brendonkwan.com
+Document (and script where possible) the procedure that was used to set up `https://brendonkwan.com` and `https://www.brendonkwan.com`
 
-## Usage
+## Procedure
 
 1. Use [these](https://docs.bitnami.com/aws/how-to/generate-install-lets-encrypt-ssl/) instructions from BitNami to obtain and install a "Let's Encrypt" SSL certificate that protects `brendonkwan.com` and `www.brendonkwan.com`.
 1. Clone this repository.
