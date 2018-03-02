@@ -1,0 +1,20 @@
+---
+- name: Change site URL
+  lineinfile:
+    backup: True
+    line: "define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] . '/');"
+    path: /opt/bitnami/apps/wordpress/htdocs/wp-config.php
+    regexp: '^define\(''WP_SITEURL'','
+    state: present
+  notify:
+  - Restart Apache
+
+- name: Change WordPress URL
+  lineinfile:
+    backup: True
+    line: "define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] . '/');"
+    path: /opt/bitnami/apps/wordpress/htdocs/wp-config.php
+    regexp: '^define\(''WP_HOME'','
+    state: present
+  notify:
+  - Restart Apache

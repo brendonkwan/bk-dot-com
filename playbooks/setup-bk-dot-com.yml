@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: False
+  pre_tasks:
+    - name: Install Python
+      become: True
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+  roles:
+    - wordpress

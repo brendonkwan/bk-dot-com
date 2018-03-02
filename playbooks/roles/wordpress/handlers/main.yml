@@ -1,0 +1,5 @@
+---
+
+- name: Restart Apache
+  become: True
+  command: /opt/bitnami/ctlscript.sh restart apache
