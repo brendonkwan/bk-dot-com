@@ -2,19 +2,25 @@
 - name: Change site URL
   lineinfile:
     backup: True
+    group: daemon
     line: "define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] . '/');"
+    owner: bitnami
     path: /opt/bitnami/apps/wordpress/htdocs/wp-config.php
     regexp: '^define\(''WP_SITEURL'','
     state: present
+  become: True
   notify:
-  - Restart Apache
+    - Restart Apache
 
 - name: Change WordPress URL
   lineinfile:
     backup: True
+    group: daemon
     line: "define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] . '/');"
+    owner: bitnami
     path: /opt/bitnami/apps/wordpress/htdocs/wp-config.php
     regexp: '^define\(''WP_HOME'','
     state: present
+  become: True
   notify:
-  - Restart Apache
+    - Restart Apache
