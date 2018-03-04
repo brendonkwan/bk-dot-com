@@ -4,6 +4,7 @@
     backup: True
     group: daemon
     line: "define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] . '/');"
+    mode: 0664
     owner: bitnami
     path: /opt/bitnami/apps/wordpress/htdocs/wp-config.php
     regexp: '^define\(''WP_SITEURL'','
@@ -17,10 +18,23 @@
     backup: True
     group: daemon
     line: "define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] . '/');"
+    mode: 0664
     owner: bitnami
     path: /opt/bitnami/apps/wordpress/htdocs/wp-config.php
     regexp: '^define\(''WP_HOME'','
     state: present
+  become: True
+  notify:
+    - Restart Apache
+
+- name: Force HTTPS redirection for WordPress
+  copy:
+    backup: True
+    dest: /opt/bitnami/apps/wordpress/conf/httpd-prefix.conf
+    group: root
+    mode: 0644
+    owner: bitnami
+    src: httpd-prefix.conf
   become: True
   notify:
     - Restart Apache
